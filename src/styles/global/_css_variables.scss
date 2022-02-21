@@ -1,0 +1,110 @@
+
+// # Colors
+// -----------------------------------
+$white:                   #ffffff;
+$light-gray:              #f9f9f9;
+$medium-light-gray:       #f6f4f1;
+$medium-gray:             #d8d8d8;
+$gray:                    #8d8f91; 
+$dark-gray:               #6a6c6e;
+$deep-gray:               #212529; 
+$black:                   #000000;
+
+$light-blue:              #deeeff;
+$medium-blue:             #99caff;
+$blue:                    #2b91ff;
+$deep-blue:               #007bff;
+$active-blue:             #f2f8ff;
+
+$light-red:               #ffccc2;
+$medium-red:              #fca79c;
+$red:                     #fb7c6b;
+$deep-red:                #fa5741;
+$active-red:              #fff2ef;
+
+$light-green:             #c5efdb;
+$medium-green:            #76daa9;
+$green:                   #4ed090;
+$deep-green:              #32bb78;
+$active-green:            #e2f7ed;
+
+$light-purple:            #ebd4f7;
+$medium-purple:           #d7a9ef;
+$purple:                  #c47fe6;
+$deep-purple:             #af52de;
+$active-purple:           #f7eefc;
+$light-active-purple:     #fcf8fe;
+
+$light-teal:              #bff3ff;
+$medium-teal:             #99ecff;
+$teal:                    #5ee1ff;
+$deep-teal:               #00cfff;
+$active-teal:             #e5faff;
+
+$light-orange:            #ffd599;
+$medium-orange:           #ffbf66;
+$orange:                  #ffaa33;
+$deep-orange:             #ff9500;
+$active-orange:           #fff1dc;
+
+$light-yellow:            #ffeb99;
+$medium-yellow:           #ffe066;
+$yellow:                  #ffd633;
+$deep-yellow:             #ffcc00;
+$active-yellow:           #fff7d6;
+
+:root {
+  // # Colors
+  // -----------------------------------
+  --white:                #{$white};
+  --light-gray:           #{$light-gray};
+  --medium-light-gray:    #{$medium-light-gray};
+  --medium-gray:          #{$medium-gray};
+  --gray:                 #{$gray};
+  --dark-gray:            #{$dark-gray};
+  --deep-gray:            #{$deep-gray};
+  --black:                #{$black};
+
+  --light-blue:           #{$light-blue};
+  --medium-blue:          #{$medium-blue};
+  --blue:                 #{$blue};
+  --deep-blue:            #{$deep-blue};
+  --active-blue:          #{$active-blue};
+
+  --light-red:            #{$light-red};
+  --medium-red:           #{$medium-red};
+  --red:                  #{$red};
+  --deep-red:             #{$deep-red};
+  --active-red:           #{$active-red};
+
+  --light-green:          #{$light-green};
+  --medium-green:         #{$medium-green};
+  --green:                #{$green};
+  --deep-green:           #{$deep-green};
+  --active-green:         #{$active-green};
+
+  --light-purple:         #{$light-purple};
+  --medium-purple:        #{$medium-purple};
+  --purple:               #{$purple};
+  --deep-purple:          #{$deep-purple};
+  --active-purple:        #{$active-purple};
+  --light-active-purple:  #{$light-active-purple};
+
+  --light-teal:           #{$light-teal};
+  --medium-teal:          #{$medium-teal};
+  --teal:                 #{$teal};
+  --deep-teal:            #{$deep-teal};
+  --active-teal:          #{$active-teal};
+
+  --light-orange:         #{$light-orange};
+  --medium-orange:        #{$medium-orange};
+  --orange:               #{$orange};
+  --deep-orange:          #{$deep-orange};
+  --active-orange:        #{$active-orange};
+
+  --light-yellow:         #{$light-yellow};
+  --medium-yellow:        #{$medium-yellow};
+  --yellow:               #{$yellow};
+  --deep-yellow:          #{$deep-yellow};
+  --active-yellow:        #{$active-yellow};
+}
