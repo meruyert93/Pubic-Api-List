@@ -13,10 +13,13 @@
       stacked="md"
       show-empty
       small
+      bordered
+      hover
+      head-variant="dark"
       @filtered="(value) => $emit('filtered', value)"
     >
       <template #cell(name)="row">
-        {{ row.value.first }} {{ row.value.last }}
+        {{ row.value }}
       </template>
 
       <template #row-details="row">
@@ -52,5 +55,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 </style>

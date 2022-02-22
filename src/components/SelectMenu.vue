@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="selectMenu">
+    <label>filter by Category Name</label>
     <b-form-select
       :options="options"
       v-model="optionModel"
@@ -28,5 +29,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.selectMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-weight: bold;
+}
 </style>
