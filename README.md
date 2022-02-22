@@ -7,7 +7,7 @@ The task was done as part of the application process.
 It is possible to search by API name and filter by category name. 
 
 ## More Info
-The app can be further optimised and improved.  One remark: it was necessary to use Vuex store here.
+The app can be further optimised and improved.  One remark: it was not necessary to use Vuex store here.
 However, the store was used to demonstrate knowledge of using Vuex library.
 
 ## Project setup
