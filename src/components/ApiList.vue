@@ -1,16 +1,24 @@
 <template>
-  <div>
-    hello
-
+  <div class="apiList">
+    <SearchBar
+      class="searchBar"
+      :value="filter"
+      @value-model="(value) => filter = value"
+      @reset="filter = ''"
+    />
     <Table
+      class="table"
       :items="apiList"
-      :perPage="10"
+      :filter="filter"
+      :perPage="perPage"
       :currentPage="currentPage"
+      :filterOn="filterOn"
       @filtered="onFiltered"
     />
     <Pagination
-      :totalCount="apiList.length"
-      :perPage="10"
+      v-if="totalCount > perPage"
+      :totalCount="totalCount"
+      :perPage="perPage"
       :currentPage="currentPage"
       @change="(value) => onPageChange(value)"
     />
@@ -22,16 +30,23 @@ import { mapActions, mapGetters } from 'vuex'
 import { INIT } from '../store/_constants'
 import Pagination from './Pagination.vue'
 import Table from './Table.vue'
+import SearchBar from './SearchBar.vue'
 
 export default {
   data () {
     return {
-      currentPage: 1
+      currentPage: 1,
+      perPage: 10,
+      filter: null,
+      filterOn: ['API'],
+      initDone: false,
+      totalCount: null
     }
   },
   components: {
     Pagination,
-    Table
+    Table,
+    SearchBar
   },
   computed: {
     ...mapGetters(['apiList'])
@@ -44,15 +59,26 @@ export default {
       this.currentPage = value
     },
     onFiltered (filteredItems) {
-      console.log(filteredItems)
+      // Trigger pagination to update the number of buttons/pages due to filtering
+      this.totalCount = filteredItems.length
+      this.currentPage = 1
     }
   },
-  created () {
-    this.init()
+  async created () {
+    await this.init()
+    this.initDone = true
+    this.totalCount = this.apiList.length
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.apiList {
+  margin: 48px;
+}
 
+.table {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
 </style>

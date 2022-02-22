@@ -15,6 +15,7 @@
     :replace="replace"
     :exact="exact"
     :tabindex="tabindex"
+    v-on="$listeners"
   >
     <svgicon
       class="icon"

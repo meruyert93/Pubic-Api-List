@@ -3,7 +3,7 @@
     <b-form-input
       ref="input"
       class="input"
-      :value="value"
+      v-model="valueModel"
       :disabled="disabled"
       :autofocus="autofocus"
       :placeholder="placeholder ? placeholder : 'Search'"
@@ -22,9 +22,9 @@
     <IconButton
       class="resetIcon"
       :fill="false"
-      v-if="value.length > 0"
+      v-if="value && value.length > 0"
       :iconSize="iconSize"
-      @mousedown.prevent.stop="onReset"
+      @click="onReset"
       iconColor="var(--gray)"
       iconName="delete-1"
       :tabindex="-1"
@@ -45,7 +45,7 @@ export default {
     'b-form-input': BFormInput
   },
   props: {
-    value: { type: String, required: true },
+    value: { type: String },
     placeholder: { type: String },
     autofocus: { type: Boolean, default: false },
     size: { type: String, default: 'm' },
@@ -64,6 +64,10 @@ export default {
       }
 
       return 16
+    },
+    valueModel: {
+      get () { return this.value },
+      set (value) { this.$emit('value-model', value) }
     }
   },
   methods: {
@@ -72,7 +76,8 @@ export default {
       return false
     },
     onReset () {
-      this.$emit('input', '')
+      this.$emit('reset')
+      console.log('reset')
       this.$refs.input.focus()
       return false
     }
