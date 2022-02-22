@@ -1,11 +1,18 @@
 <template>
   <div>
     hello
+
+    <Table
+      :items="apiList"
+      :perPage="10"
+      :currentPage="currentPage"
+      @filtered="onFiltered"
+    />
     <Pagination
       :totalCount="apiList.length"
-      :perPage="20"
-      :currentPage="1"
-      @change="onPageChange"
+      :perPage="10"
+      :currentPage="currentPage"
+      @change="(value) => onPageChange(value)"
     />
   </div>
 </template>
@@ -14,10 +21,17 @@
 import { mapActions, mapGetters } from 'vuex'
 import { INIT } from '../store/_constants'
 import Pagination from './Pagination.vue'
+import Table from './Table.vue'
 
 export default {
+  data () {
+    return {
+      currentPage: 1
+    }
+  },
   components: {
-    Pagination
+    Pagination,
+    Table
   },
   computed: {
     ...mapGetters(['apiList'])
@@ -26,8 +40,11 @@ export default {
     ...mapActions({
       init: INIT
     }),
-    onPageChange () {
-      console.log('switch page')
+    onPageChange (value) {
+      this.currentPage = value
+    },
+    onFiltered (filteredItems) {
+      console.log(filteredItems)
     }
   },
   created () {
