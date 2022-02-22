@@ -2,6 +2,8 @@
 
 This app shows a list of public APIs that are fetched from https://api.publicapis.org.
 
+## [You can see deployed version here!](https://mk-public-api-list.netlify.app/)
+
 ## Description
 The task was done as part of the application process. 
 It is possible to search by API name and filter by category name. 
