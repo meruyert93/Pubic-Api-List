@@ -7,7 +7,7 @@
       @value-model="(value) => filter = value"
       @reset="filter = ''"
     />
-    <SkeletonList v-if="!initDone"/>
+    <SkeletonList class="skeletonList" v-if="!initDone"/>
 
     <div class="listWrapper" v-else>
       <SelectMenu
@@ -116,6 +116,7 @@ export default {
   margin: 48px;
 }
 
+.skeletonList,
 .listWrapper {
   margin-right: 24px;
   margin-left: 24px;
