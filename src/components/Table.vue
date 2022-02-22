@@ -6,6 +6,7 @@
       :current-page="currentPage"
       :per-page="perPage"
       :filter="filter"
+      :filter-included-fields="filterOn"
       :sort-by.sync="sortBy"
       :sort-desc.sync="sortDesc"
       :sort-direction="sortDirection"
@@ -16,15 +17,6 @@
     >
       <template #cell(name)="row">
         {{ row.value.first }} {{ row.value.last }}
-      </template>
-
-      <template #cell(actions)="row">
-        <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
-          Info modal
-        </b-button>
-        <b-button size="sm" @click="row.toggleDetails">
-          {{ row.detailsShowing ? 'Hide' : 'Show' }} Details
-        </b-button>
       </template>
 
       <template #row-details="row">
@@ -48,6 +40,7 @@ export default {
   props: {
     items: { Type: Array, required: true },
     fields: { Type: Array },
+    filterOn: { type: Array },
     currentPage: { type: Number, required: true },
     perPage: { type: Number, required: true },
     filter: { type: String, default: null },

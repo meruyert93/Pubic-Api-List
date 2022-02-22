@@ -6,6 +6,11 @@
       @value-model="(value) => filter = value"
       @reset="filter = ''"
     />
+    <SelectMenu
+      :option="filterCategory"
+      @option-model="(value) => filterCategory = value"
+      :options="filterCategoryOptions"
+    />
     <Table
       class="table"
       :items="apiList"
@@ -31,6 +36,7 @@ import { INIT } from '../store/_constants'
 import Pagination from './Pagination.vue'
 import Table from './Table.vue'
 import SearchBar from './SearchBar.vue'
+import SelectMenu from './SelectMenu.vue'
 
 export default {
   data () {
@@ -38,18 +44,25 @@ export default {
       currentPage: 1,
       perPage: 10,
       filter: null,
-      filterOn: ['API'],
+      filterOn: ['API'], // filter based on API name
       initDone: false,
-      totalCount: null
+      totalCount: null,
+      filterCategory: ''
     }
   },
   components: {
     Pagination,
     Table,
-    SearchBar
+    SearchBar,
+    SelectMenu
   },
   computed: {
-    ...mapGetters(['apiList'])
+    ...mapGetters(['apiList']),
+    filterCategoryOptions () {
+      const uniqueFilterSet = new Set()
+      this.apiList.map(item => uniqueFilterSet.add(item.Category))
+      return Array.from(uniqueFilterSet)
+    }
   },
   methods: {
     ...mapActions({
