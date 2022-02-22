@@ -4,16 +4,19 @@
     <SearchBar
       value="hello"
     />
+    <ApiList/>
   </div>
 </template>
 
 <script>
 import SearchBar from './components/SearchBar.vue'
+import ApiList from './components/ApiList.vue'
 
 export default {
   name: 'App',
   components: {
-    SearchBar
+    SearchBar,
+    ApiList
   }
 }
 </script>

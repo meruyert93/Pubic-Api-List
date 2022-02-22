@@ -4,6 +4,7 @@ import Vue from 'vue'
 import './plugins/bootstrap-vue'
 import App from './App.vue'
 import SvgIcon from 'vue-svgicon'
+import store from './store'
 
 Vue.config.productionTip = false
 
@@ -12,5 +13,6 @@ Vue.use(SvgIcon, {
 })
 
 new Vue({
+  store,
   render: h => h(App)
 }).$mount('#app')
