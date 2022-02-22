@@ -13,7 +13,7 @@
     />
     <Table
       class="table"
-      :items="apiList"
+      :items="filteredApiList"
       :filter="filter"
       :perPage="perPage"
       :currentPage="currentPage"
@@ -47,7 +47,7 @@ export default {
       filterOn: ['API'], // filter based on API name
       initDone: false,
       totalCount: null,
-      filterCategory: ''
+      filterCategory: 'All Categories'
     }
   },
   components: {
@@ -60,8 +60,17 @@ export default {
     ...mapGetters(['apiList']),
     filterCategoryOptions () {
       const uniqueFilterSet = new Set()
+      // giving possibility to select all categories
+      uniqueFilterSet.add('All Categories')
+
       this.apiList.map(item => uniqueFilterSet.add(item.Category))
       return Array.from(uniqueFilterSet)
+    },
+    filteredApiList () {
+      const filteredItems = this.filterCategory !== 'All Categories'
+        ? this.apiList.filter(item => item.Category === this.filterCategory)
+        : this.apiList
+      return filteredItems
     }
   },
   methods: {
@@ -75,6 +84,12 @@ export default {
       // Trigger pagination to update the number of buttons/pages due to filtering
       this.totalCount = filteredItems.length
       this.currentPage = 1
+    }
+  },
+  watch: {
+    filteredApiList (val) {
+      // Trigger pagination to update the number of buttons/pages due to filtering
+      this.totalCount = val.length
     }
   },
   async created () {
