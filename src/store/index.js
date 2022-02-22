@@ -26,7 +26,6 @@ export default new Vuex.Store({
 
         const apiList = await response.json()
         commit(INIT, apiList.entries)
-        console.log('body', apiList.entries)
       } catch (error) {
         console.error(error)
       }
