@@ -5,20 +5,28 @@ import { INIT } from './_constants'
 
 Vue.use(Vuex)
 
+const getInitialState = () => ({
+  apiList: []
+})
+
 export default new Vuex.Store({
-  state: {
+  state: getInitialState,
+  getters: {
+    apiList: (state) => state.apiList
   },
   mutations: {
+    [INIT] (state, apiList) {
+      state.apiList = apiList
+    }
   },
   actions: {
-    async [INIT] () {
+    async [INIT] ({ commit }) {
       try {
-        const response = await fetch('https://api.publicapis.org/entries', {
-          // mode: 'no-cors'
-        })
+        const response = await fetch('https://api.publicapis.org/entries')
 
-        const body = await response.json()
-        console.log('body', body)
+        const apiList = await response.json()
+        commit(INIT, apiList.entries)
+        console.log('body', apiList.entries)
       } catch (error) {
         console.error(error)
       }
