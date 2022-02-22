@@ -1,21 +1,17 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <SearchBar
-      value="hello"
-    />
     <ApiList/>
   </div>
 </template>
 
 <script>
-import SearchBar from './components/SearchBar.vue'
+
 import ApiList from './components/ApiList.vue'
 
 export default {
   name: 'App',
   components: {
-    SearchBar,
     ApiList
   }
 }
@@ -23,6 +19,10 @@ export default {
 
 <style lang="scss">
 @import '~@/styles/global/index';
+
+.searchBar {
+  margin: 48px;
+}
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
