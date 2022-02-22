@@ -1,28 +1,30 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+    <img class="image" alt="Vue logo" src="./assets/logo.png">
+    <Header/>
     <ApiList/>
+    <Footer/>
   </div>
 </template>
 
 <script>
 
 import ApiList from './components/ApiList.vue'
+import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
 
 export default {
   name: 'App',
   components: {
-    ApiList
+    ApiList,
+    Footer,
+    Header
   }
 }
 </script>
 
 <style lang="scss">
 @import '~@/styles/global/index';
-
-.searchBar {
-  margin: 48px;
-}
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -31,5 +33,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.image {
+  width: 64px;
 }
 </style>

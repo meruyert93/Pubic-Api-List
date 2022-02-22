@@ -9,7 +9,7 @@
     />
     <SkeletonList v-if="!initDone"/>
 
-    <div v-else>
+    <div class="listWrapper" v-else>
       <SelectMenu
         :option="filterCategory"
         @option-model="(value) => filterCategory = value"
@@ -109,7 +109,16 @@ export default {
 
 <style lang="scss" scoped>
 .apiList {
+  margin: 60px;
+}
+
+.searchBar {
   margin: 48px;
+}
+
+.listWrapper {
+  margin-right: 24px;
+  margin-left: 24px;
 }
 
 .table {
