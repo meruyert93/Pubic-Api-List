@@ -77,7 +77,6 @@ export default {
     },
     onReset () {
       this.$emit('reset')
-      console.log('reset')
       this.$refs.input.focus()
       return false
     }
