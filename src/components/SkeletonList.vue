@@ -40,12 +40,24 @@ export default {
   padding: 0;
 }
 
+@keyframes skeletonLoading {
+  0% {
+    background-position: -100% 0;
+  }
+
+  100% {
+    background-position: 100% 0;
+  }
+}
+
 @mixin skeletonAnimation {
   &:before {
     content: "";
     position: absolute;
     width: 100%;
     height: 100%;
+    top: 0;
+    right: 0;
     animation-name: skeletonLoading;
     animation-duration: 5s;
     animation-timing-function: linear;
@@ -53,8 +65,8 @@ export default {
     background: linear-gradient(
       to right,
       var(--gray) 2%,
-      var(--gray) 38%,
-      var(--gray) 53%
+      var(--black) 38%,
+      var(--gray)53%
     );
     background-size: 50%;
     mix-blend-mode: overlay;
@@ -82,10 +94,7 @@ export default {
   position: relative;
   @include skeletonAnimation();
   @include skeletonFade();
-
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  @include listReset();
 
   & > *:not(:last-child) {
     margin-bottom: 8px;
