@@ -3,30 +3,35 @@
     <SearchBar
       class="searchBar"
       :value="filter"
+      placeholder="Search by API name"
       @value-model="(value) => filter = value"
       @reset="filter = ''"
     />
-    <SelectMenu
-      :option="filterCategory"
-      @option-model="(value) => filterCategory = value"
-      :options="filterCategoryOptions"
-    />
-    <Table
-      class="table"
-      :items="filteredApiList"
-      :filter="filter"
-      :perPage="perPage"
-      :currentPage="currentPage"
-      :filterOn="filterOn"
-      @filtered="onFiltered"
-    />
-    <Pagination
-      v-if="totalCount > perPage"
-      :totalCount="totalCount"
-      :perPage="perPage"
-      :currentPage="currentPage"
-      @change="(value) => onPageChange(value)"
-    />
+    <SkeletonList v-if="!initDone"/>
+
+    <div v-else>
+      <SelectMenu
+        :option="filterCategory"
+        @option-model="(value) => filterCategory = value"
+        :options="filterCategoryOptions"
+      />
+      <Table
+        class="table"
+        :items="filteredApiList"
+        :filter="filter"
+        :perPage="perPage"
+        :currentPage="currentPage"
+        :filterOn="filterOn"
+        @filtered="onFiltered"
+      />
+      <Pagination
+        v-if="totalCount > perPage"
+        :totalCount="totalCount"
+        :perPage="perPage"
+        :currentPage="currentPage"
+        @change="(value) => onPageChange(value)"
+      />
+    </div>
   </div>
 </template>
 
@@ -37,6 +42,7 @@ import Pagination from './Pagination.vue'
 import Table from './Table.vue'
 import SearchBar from './SearchBar.vue'
 import SelectMenu from './SelectMenu.vue'
+import SkeletonList from './SkeletonList.vue'
 
 export default {
   data () {
@@ -54,7 +60,8 @@ export default {
     Pagination,
     Table,
     SearchBar,
-    SelectMenu
+    SelectMenu,
+    SkeletonList
   },
   computed: {
     ...mapGetters(['apiList']),
